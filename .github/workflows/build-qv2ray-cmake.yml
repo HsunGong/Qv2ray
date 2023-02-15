@@ -30,13 +30,11 @@ jobs:
         platform: [macos-latest, osx-arm64]
         #build_type: [RelWithDebInfo, Release]
         build_type: [Release]
-        qt_version: [5.15.0]
       fail-fast: false
 
     runs-on: ${{ matrix.platform }}
     env:
       _QV2RAY_BUILD_INFO_: "Qv2ray built from Github Action"
-      _QV2RAY_BUILD_EXTRA_INFO_: "qt${{ matrix.qt_version }}-${{ github.sha }}-ci.${{ matrix.platform }}"
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
     steps:
@@ -84,7 +82,7 @@ jobs:
       - name: macOS - ${{ matrix.platform }} - Uploading Artifact
         uses: actions/upload-artifact@master
         with:
-          name: Qv2ray-${{ github.sha }}.macOS.qt${{ matrix.qt_version }}-${{ matrix.build_type }}.dmg
+          name: Qv2ray-${{ github.sha }}.macOS-${{ matrix.platform }}-${{ matrix.build_type }}.dmg
           path: Qv2ray.dmg
       - name: macOS - ${{ matrix.platform }} - Upload binaries to release
         uses: svenstaro/upload-release-action@v1-release
