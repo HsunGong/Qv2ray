@@ -57,7 +57,7 @@ jobs:
           cd macdeployqt-patched
           mkdir build; cd build;
           cmake .. -DCMAKE_BUILD_TYPE=Release; cmake --build .
-          cp -v ./macdeployqt /tmp/bin/macdeployqt
+          cp -v ./macdeployqt /tmp
       # ========================================================================================================= Generate MakeFile and Build
       - uses: actions/setup-node@v3
         with:
